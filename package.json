@@ -8,9 +8,14 @@
     "postinstall": "webpack -p"
   },
   "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.8",
+    "@fortawesome/fontawesome-free-solid": "^5.0.13",
+    "@fortawesome/vue-fontawesome": "0.0.22",
     "bootstrap": "^4.1.1",
     "vue": "^2.2.1",
-    "vuex": "^2.2.1"
+    "vue-router": "^3.0.1",
+    "vuex": "^2.2.1",
+    "vuex-router-sync": "^5.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
