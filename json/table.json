@@ -4,41 +4,62 @@
             {
                 "field": "projectId",
                 "placeholder": "Project ID",
-                "options": [100, 101, 102]
+                "options": [100, 101, 102],
+                "color": "black",
+                "fontSize": 10
             },
             {
                 "field": "projectNo",
                 "placeholder": "Project No",
-                "options": [1, 2, 3]
+                "options": [1, 2, 3],
+                "color": "black",
+                "fontSize": 10
             }
         ],
         "columns": [
             {
                 "key": "contractNo",
-                "label": "Contact No."
+                "label": "Contact No.",
+                "backgroundColor": "white",
+                "color": "blue",
+                "fontSize": 10
             },
             {
                 "key": "projectId",
-                "label": "Project ID"
+                "label": "Project ID",
+                "backgroundColor": "white",
+                "color": "black",
+                "fontSize": 10
             },
             {
                 "key": "projectNo",
-                "label": "Project No."
+                "label": "Project No.",
+                "backgroundColor": "white",
+                "color": "black",
+                "fontSize": 10
             },
             {
                 "key": "description",
-                "label": "Description"
+                "label": "Description",
+                "backgroundColor": "white",
+                "color": "black",
+                "fontSize": 10
             },
             {
                 "key": "location",
-                "label": "Construction Location"
+                "label": "Construction Location",
+                "backgroundColor": "white",
+                "color": "black",
+                "fontSize": 10
             }
         ],
         "header": {
-            "backgroundColor": "blue"
+            "backgroundColor": "blue",
+            "color": "white",
+            "fontSize": 10
         }
     },
-    "rows": [
+    "data": [
         {
             "contractNo": "Contract No",
             "projectId": "Project ID",
