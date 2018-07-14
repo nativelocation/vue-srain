@@ -3,6 +3,7 @@
         class="dropdown multiple"
         :style="{
             width: styleData.width + 'px',
+            height: styleData.height + 'px',
             background: styleData.background,
             fontSize: styleData.fontSize + 'px'
         }"
@@ -14,6 +15,9 @@
             }"
             @click="autoShow"
             :style="{
+                width: styleData.width + 'px',
+                height: styleData.height + 'px',
+                fontSize: styleData.fontSize + 'px',
                 backgroundPosition: (styleData.width - 18) + 'px, center',
                 color: styleData.color
             }"
@@ -88,12 +92,13 @@
             },
             styleData: {
                 type: Object,
-                default: {
+                default: () => ({
+                    height: 17,
                     width: 120,
                     fontSize: 10,
                     color: '#B3B3B3',
                     background: '#DBDBDB'
-                }
+                })
             },
             fixListWidth: {
                 type: Boolean,
@@ -191,9 +196,9 @@
     .dropdown.multiple {
         display: inline-block;
         position: relative;
+        margin-left: 5px;
+        margin-right: 5px;
         .selected {
-            height: 28px;
-            line-height: 28px;
             border-radius: 3px;
             border: 1px solid #B3C1D8;
             font-size: 1.2em;
