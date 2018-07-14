@@ -1,0 +1,64 @@
+{
+    "configurations": {
+        "filters": [
+            {
+                "field": "projectId",
+                "placeholder": "Project ID",
+                "options": [100, 101, 102]
+            },
+            {
+                "field": "projectNo",
+                "placeholder": "Project No",
+                "options": [1, 2, 3]
+            }
+        ],
+        "columns": [
+            {
+                "key": "contractNo",
+                "label": "Contact No."
+            },
+            {
+                "key": "projectId",
+                "label": "Project ID"
+            },
+            {
+                "key": "projectNo",
+                "label": "Project No."
+            },
+            {
+                "key": "description",
+                "label": "Description"
+            },
+            {
+                "key": "location",
+                "label": "Construction Location"
+            }
+        ],
+        "header": {
+            "backgroundColor": "blue"
+        }
+    },
+    "rows": [
+        {
+            "contractNo": "Contract No",
+            "projectId": "Project ID",
+            "projectNo": "Project No.",
+            "description": "Description",
+            "location": "Lorem Ipsum"
+        },
+        {
+            "contractNo": "Contract No",
+            "projectId": "Project ID",
+            "projectNo": "Project No.",
+            "description": "Description",
+            "location": "Lorem Ipsum"
+        },
+        {
+            "contractNo": "Contract No",
+            "projectId": "Project ID",
+            "projectNo": "Project No.",
+            "description": "Description",
+            "location": "Lorem Ipsum"
+        }
+    ]
+}
