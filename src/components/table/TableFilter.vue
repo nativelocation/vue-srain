@@ -7,6 +7,7 @@
                 <input
                     class="search-filter-input"
                     placeholder="Search"
+                    v-model="searchString"
                 />
             </div>
             <label>{{filter.name}}</label>
@@ -38,7 +39,7 @@
         data: () => {
             return {
                 time: new Date(),
-                range: [new Date(), new Date()],
+                range: [new Date('01/01/2000'), new Date()],
                 local: {
                     dow: 0,
                     hourTip: 'Select Hour',
@@ -50,7 +51,22 @@
                     weeks: 'Su_Mo_Tu_We_Th_Fr_Sa'.split('_'),
                     cancelTip: 'cancel',
                     submitTip: 'confirm'
+                },
+                searchString: ''
+            }
+        },
+        watch: {
+            data: {
+                immediate: true,
+                handler(val) {
+                    this.rangeDate([this.range[0].getTime(), this.range[1].getTime()])
                 }
+            },
+            range: function(newRange, oldRange) {
+                this.rangeDate([newRange[0].getTime(), newRange[1].getTime()])
+            },
+            searchString: function(string) {
+                this.searchText(string)
             }
         },
         props: {
@@ -73,6 +89,14 @@
             customSelectedText: {
                 type: Function,
                 default: () => {}
+            },
+            rangeDate: {
+                type: Function,
+                default: () => {}
+            },
+            searchText: {
+                type: Function,
+                default: () => {}
             }
         },
         components: {
@@ -86,9 +110,10 @@
             },
             filterOptions() {
                 const self = this
-                return _.map(_.uniqBy(self.rows, self.filter.field), item => {
+                const filters = [{ label: 'All', selected: true }]
+                return filters.concat(_.map(_.uniqBy(self.rows, self.filter.field), item => {
                     return { label : item[self.filter.field] }
-                })
+                }))
             }
         }
     }
