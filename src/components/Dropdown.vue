@@ -67,6 +67,7 @@
 </template>
 
 <script>
+    import _ from 'lodash'
     const EMPTY_FN = () => {}
     let idx = 0
     export default {
@@ -165,10 +166,56 @@
                 }
                 const id = this.id(item)
                 item.selected = document.querySelector('#' + id).checked
-                if (!item.selected) {
-                    this.selected = this.selected.filter(d => d !== item)
+                if (item.label === 'All') {
+                    if (item.selected) {
+                        this.selected = [item]
+                        const updatedItems = []
+                        const items = this.items.slice()
+                        _.each(items, (item, index) => {
+                            const updatedItem = item
+                            if (index === 0) {
+                                updatedItem.selected = true
+                            } else {
+                                updatedItem.selected = false
+                            }
+                            updatedItems.push(updatedItem)
+                        })
+                        this.items = updatedItems
+                    } else {
+                        this.selected = []
+                        const options = this.options.slice()
+                        _.each(options, (option, index) => {
+                            if (index > 0) {
+                                const copyItem = []
+                                copyItem._idx = index
+                                copyItem.label = option.label
+                                copyItem.selected = true
+                                this.selected.push(copyItem)
+                            }
+                        })
+                        const updatedItems = []
+                        const items = this.items.slice()
+                        _.each(items, (item, index) => {
+                            const updatedItem = item
+                            if (index > 0) {
+                                updatedItem.selected = true
+                            }
+                            updatedItems.push(updatedItem)
+                        })
+                        this.items = updatedItems
+                    }
                 } else {
-                    this.selected.push(item)
+                    if (!item.selected) {
+                        this.selected = this.selected.filter(d => d._idx !== item._idx)
+                        if (this.selected.length === 0) {
+                            this.items[0].selected = true
+                            this.selected = [this.items[0]]
+                        }
+                    } else {
+                        this.items[0].selected = false
+                        this.selected = this.selected.filter(d => d._idx !== 1)
+                        this.selected.push(item)
+                    }
                 }
                 if (this.itemChanged !== EMPTY_FN) {
                     this.itemChanged(item)

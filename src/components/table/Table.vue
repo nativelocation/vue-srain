@@ -1,7 +1,7 @@
 <template>
     <div id="table">
         <v2-table
-            :data="rowData"
+            :data="rows"
             border
             :cellHeight="cellHeight"
             :colHeight="colHeight"
@@ -18,14 +18,7 @@
 </template>
 
 <script>
-    import _ from 'lodash'
     export default {
-        data: () => {
-            return {
-                rowsFilterData: [],
-                colsFilterData: []
-            }
-        },
         props: {
             columns: {
                 type: Array,
@@ -35,10 +28,6 @@
                 type: Array,
                 default: () => []
             },
-            filter: {
-                type: Object,
-                default: () => {}
-            },
             cellHeight: {
                 type: String,
                 default: '22'
@@ -46,30 +35,6 @@
             colHeight: {
                 type: String,
                 default: '22'
-            }
-        },
-        watch: {
-            data: {
-                immediate: true,
-                handler(val) {
-                    this.rowsFilterData = this.rows.slice(0)
-                    console.log('rowsFilterData', this.rows)
-                }
-            }
-        },
-        computed: {
-            rowData() {
-                const self = this
-                let rowsData = this.rows.slice()
-                if (this.filter.filterItem.length > 0) {
-                    rowsData = _.filter(rowsData, rowFilterData => {
-                        return _.findIndex(self.filter.filterItem, item => {
-                            console.log(item.label, rowFilterData[self.filter.filterKey])
-                            return rowFilterData[self.filter.filterKey] === item.label
-                        }) > -1
-                    })
-                }
-                return rowsData
             }
         }
     }
