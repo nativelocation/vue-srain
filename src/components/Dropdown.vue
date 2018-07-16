@@ -196,8 +196,8 @@
     .dropdown.multiple {
         display: inline-block;
         position: relative;
-        margin-left: 5px;
-        margin-right: 5px;
+        margin-left: 9px;
+        margin-right: 9px;
         .selected {
             border-radius: 3px;
             border: 1px solid #B3C1D8;
