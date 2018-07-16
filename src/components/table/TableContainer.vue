@@ -53,13 +53,15 @@
                         }) > -1
                     })
                 }
-                if (this.filter.filterItem.length > 0) {
-                    if (this.filter.filterItem[0].label !== 'All') {
-                        rowsData = _.filter(rowsData, rowFilterData => {
-                            return _.findIndex(self.filter.filterItem, item => {
-                                return rowFilterData[self.filter.filterKey] === item.label
-                            }) > -1
-                        })
+                if (this.filter) {
+                    if (this.filter.filterItem.length > 0) {
+                        if (this.filter.filterItem[0].label !== 'All') {
+                            rowsData = _.filter(rowsData, rowFilterData => {
+                                return _.findIndex(self.filter.filterItem, item => {
+                                    return rowFilterData[self.filter.filterKey] === item.label
+                                }) > -1
+                            })
+                        }
                     }
                 }
                 _.remove(rowsData, rowData => {

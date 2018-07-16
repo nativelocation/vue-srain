@@ -61,6 +61,14 @@ module.exports = {
 				options: {
 					name: '[name].[ext]?[hash]'
 				}
+			},
+			{
+				test: /\.(ttf)$/,
+				loader: 'file-loader'
+			},
+			{
+				test: /\.(eot|svg|ttf|woff|woff2)$/,
+				loader: 'file?name=material-design-icons/iconfont/[name].[ext]'
 			}
 		]
 	},

@@ -1,19 +1,19 @@
 <template>
     <div id="table">
-        <v2-table
-            :data="rows"
+        <b-table
+            :items="rows"
+            :fields="columns"
             border
-            :cellHeight="cellHeight"
-            :colHeight="colHeight"
+            class="border-0 m-0"
         >
-            <v2-table-column
+            <span
                 v-for="(column, index) in columns"
                 :key="index"
-                :label="column.label"
-                :prop="column.key"
-                :width="column.weight"
-            />
-        </v2-table>
+                :slot="column.key"
+                slot-scope="data"
+                v-html="data.value">
+            </span>
+        </b-table>
     </div>
 </template>
 
@@ -27,14 +27,6 @@
             rows: {
                 type: Array,
                 default: () => []
-            },
-            cellHeight: {
-                type: String,
-                default: '22'
-            },
-            colHeight: {
-                type: String,
-                default: '22'
             }
         }
     }
@@ -43,17 +35,32 @@
 <style lang="sass">
     @import '~styles/variables';
     #table {
-        .v2-table__header {
-            th {
-                background: $blue;
-                border-color: $gray-600;
-                color: $white;
-            }
+        .table-header-internal {
+            background: $blue;
+            color: $white;
         }
-        .v2-table__body {
-            td {
-                border-color: $gray-600;
-            }
+        .table-header-public {
+            height: 22px;
+            background: $gray-200;
+            color: $black;
+            border-color: $gray-600;
+            border: solid 1px;
+            padding: 0;
+            padding-left: 5px;
+            font-size: 12px;
+            font-family: arial;
+            font-weight: 100;
+        }
+        .table-body {
+            height: 22px;
+            background: $white;
+            border-color: $gray-600;
+            color: $black;
+            padding: 0;
+            padding-left: 5px;
+            font-size: 12px;
+            font-family: arial;
+            font-weight: 100;
         }
     }
 </style>
